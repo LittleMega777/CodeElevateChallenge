@@ -46,7 +46,7 @@ Gerar uma nova tabela chamada `info_corridas_do_dia`, agrupada por `DATA_INICIO`
 
 ---
 
-### 💡 Exemplos de tecnologias sugeridas:
+### 💡 Tecnologias utilizadas:
 - Python (pandas, datetime)
 - SQLite ou outro banco leve para armazenamento da tabela final
 
