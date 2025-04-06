@@ -3,3 +3,7 @@
 
 # arquivo gerado pelo sqllite  
 dados_iot.db
+
+# pycache
+__pycache__
+.pytest_cache
