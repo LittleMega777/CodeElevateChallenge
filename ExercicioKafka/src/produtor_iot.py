@@ -20,8 +20,9 @@ def gerar_dados_iot():
         "timestamp": fake.iso8601()
     }
 
-while True:
-    mensagem = gerar_dados_iot()
-    producer.send('meu-topico', mensagem)
-    print("Mensagem enviada:", mensagem)
-    time.sleep(5)
+if __name__ == "__main__":
+    while True:
+        mensagem = gerar_dados_iot()
+        producer.send('meu-topico', mensagem)
+        print("Mensagem enviada:", mensagem)
+        time.sleep(5)
