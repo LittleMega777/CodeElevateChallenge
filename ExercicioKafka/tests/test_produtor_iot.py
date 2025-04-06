@@ -1,9 +1,7 @@
 from faker import Faker
 from src.produtor_iot import gerar_dados_iot
-import random
 
 faker = Faker()
-
 
 def test_is_dict_gerar_dados_iot():
     dados_iot = gerar_dados_iot()

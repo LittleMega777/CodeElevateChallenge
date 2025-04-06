@@ -39,9 +39,9 @@ def configura_consumer(
 
     consumer = KafkaConsumer(
         topico,
-        bootstrap_servers= bootstrap_servers,
-        auto_offset_reset= auto_offset_reset,
-        group_id= group_id,
+        bootstrap_servers = bootstrap_servers,
+        auto_offset_reset = auto_offset_reset,
+        group_id = group_id,
         value_deserializer = value_deserialiazer
     )
     return consumer
