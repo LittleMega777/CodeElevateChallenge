@@ -1,1 +1,5 @@
+# ambiente virtual
 .venv
+
+# arquivo gerado pelo sqllite  
+dados_iot.db
