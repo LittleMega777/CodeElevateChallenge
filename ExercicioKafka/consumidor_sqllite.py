@@ -3,36 +3,41 @@ import sqlite3
 from kafka import KafkaConsumer
 import pandas as pd
 
-# Mostrar todas as colunas
-pd.set_option('display.max_columns', None)
 
-# Mostrar todas as linhas
-pd.set_option('display.max_rows', None)
+def pd_print_config():
+    # Mostrar todas as colunas
+    pd.set_option('display.max_columns', None)
 
-# Ampliar largura máxima das colunas
-pd.set_option('display.max_colwidth', None)
+    # Mostrar todas as linhas
+    pd.set_option('display.max_rows', None)
 
-# Opcional: aumentar largura total do terminal
-pd.set_option('display.width', None)
+    # Ampliar largura máxima das colunas
+    pd.set_option('display.max_colwidth', None)
 
-# Conectar/criar banco SQLite
-conn = sqlite3.connect('dados_iot.db')
-cursor = conn.cursor()
+    # Opcional: aumentar largura total do terminal
+    pd.set_option('display.width', None)
 
-# Criar tabela se não existir
-cursor.execute('''
-    CREATE TABLE IF NOT EXISTS iot_dados (
+
+def cria_tabela_iot_dados(cursor):
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS iot_dados (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         dispositivo_id TEXT,
         localizacao TEXT,
         temperatura REAL,
         umidade REAL,
         timestamp TEXT
-    )
-''')
-conn.commit()
+        )
+                   ''')
 
-# Configurar consumidor Kafka
+
+conexao = sqlite3.connect('dados_iot.db')
+cursor = conexao.cursor()
+
+cria_tabela_iot_dados(cursor)
+
+conexao.commit()
+
 consumer = KafkaConsumer(
     'meu-topico',
     bootstrap_servers='localhost:9092',
@@ -47,7 +52,6 @@ for mensagem in consumer:
     dado = mensagem.value
     print("Recebido:", dado)
 
-    # Inserir no banco
     cursor.execute('''
         INSERT INTO iot_dados (dispositivo_id, localizacao, temperatura, umidade, timestamp)
         VALUES (?, ?, ?, ?, ?)
@@ -58,8 +62,8 @@ for mensagem in consumer:
         dado['umidade'],
         dado['timestamp']
     ))
-    conn.commit()
+    conexao.commit()
 
-    df = pd.read_sql_query("SELECT * FROM iot_dados", conn)
-
+    df = pd.read_sql_query("SELECT * FROM iot_dados", conexao)
+    pd_print_config()
     print(df)
