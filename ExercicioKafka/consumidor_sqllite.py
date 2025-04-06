@@ -47,7 +47,7 @@ consumer = KafkaConsumer(
 )
 
 print("Consumindo e salvando no SQLite...")
-
+## TO DO add if main == name
 for mensagem in consumer:
     dado = mensagem.value
     print("Recebido:", dado)
