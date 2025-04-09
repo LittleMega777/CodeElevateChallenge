@@ -47,8 +47,9 @@ Gerar uma nova tabela chamada `info_corridas_do_dia`, agrupada por `DATA_INICIO`
 ---
 
 ### 💡 Tecnologias utilizadas:
+- Python
 - Pandas
-- SQLite 
+- SQLite (banco de dados leve para testes)
 
 ---
 
