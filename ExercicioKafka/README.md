@@ -28,24 +28,24 @@ Para começar, é necessário instalar tanto o Apache Kafka quanto o Zookeeper, 
    - O Kafka já inclui o Zookeeper. Navegue até o diretório do Kafka e localize a pasta `bin`.
    - Execute o comando para iniciar o Zookeeper:
      ```sh
-     bin/zookeeper-server-start.sh config/zookeeper.properties
+     bin/windows/zookeeper-server-start.bat config/zookeeper.properties
      ```
 
 3. **Iniciar o Kafka:**
    - Em uma nova janela do terminal, navegue até o diretório do Kafka.
    - Execute o comando para iniciar o broker do Kafka:
      ```sh
-     bin/kafka-server-start.sh config/server.properties
+     bin/windows/kafka-server-start.bat config/server.properties
      ```
 4. **Criando topico Kafka:**
    - Em uma nova janela do terminal, navegue até o diretório do Kafka.
    - Execute o comando para criar o topico Kafka:
      ```
-     bin/kafka-topics.sh --create --topic meu-topico --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+     bin/windows/kafka-topics.bat --create --topic meu-topico --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
      ```
    - Para confirmar a existência do topico execute o comando que deve retornar o 'meu-topico':
      ```
-     bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+     bin/windows/kafka-topics.bat --list --bootstrap-server localhost:9092
      meu-topico
      ```
 5. **Deixe o Kafka rodando e o Zookeeper tambem em terminais separados**
