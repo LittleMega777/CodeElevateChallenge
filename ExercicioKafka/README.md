@@ -46,8 +46,8 @@ Para começar, é necessário instalar tanto o Apache Kafka quanto o Zookeeper, 
    - Para confirmar a existência do topico execute o comando que deve retornar o 'meu-topico':
      ```
      bin/windows/kafka-topics.bat --list --bootstrap-server localhost:9092
-     meu-topico
      ```
+     meu-topico
 5. **Deixe o Kafka rodando e o Zookeeper tambem em terminais separados**
 
 ## ▶️ Como Executar
